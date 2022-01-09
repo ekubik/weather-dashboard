@@ -83,15 +83,17 @@ function fiveDayForecast() {
       console.log(response);
       return response.json();
     })
-    .then(function(data) {
+    .then(function (data) {
       console.log(data);
       for (var i = 0; i < 40, i + 8; ) {
+        var forecastCard = document.createElement("div");
         var forecastTemp = document.createElement("p");
         var forecastWind = document.createElement("p");
         var forecastHumidity = document.createElement("p");
 
         forecastTemp.textContent = "Temp: " + data.list[i].main.temp + "°C";
-        forecastContainer.append(forecastTemp);
+        forecastCard.append(forecastTemp);
+        forecastContainer.append(forecastCard);
       }
     });
 }
