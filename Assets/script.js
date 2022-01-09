@@ -5,9 +5,9 @@ var apiUrl =
   "&appid=" +
   apiKey;
 
-var cityInput = document.getElementById("city-search");
+var cityInput = $("input[name='city-search']");
 
-var city = cityInput.value;
+var city = cityInput.val();
 
 var searchBtn = document.getElementById("searchBtn");
 
@@ -18,4 +18,5 @@ function currentWeather() {
     return response.json();
   });
 }
+
 searchBtn.addEventListener("click", currentWeather());
