@@ -3,6 +3,7 @@ var dateToday = moment().format("DD/MM/YYYY");
 var currentWeatherEl = document.getElementById("current-weather-container");
 var forecastContainer = document.getElementById("five-day-forecast");
 var searchBtn = document.getElementById("searchBtn");
+var searchHistory = [];
 
 function currentWeather() {
   event.preventDefault();
@@ -154,6 +155,21 @@ function fiveDayForecast() {
     });
 }
 
+function storeSearchHistory() {
+  var cityInput = $("input[name='city-search']");
+  var city = cityInput.val();
+  searchHistory.push(city);
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+}
+
+//function displaySearchHistory() {
+  //var savedSearchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+  //console.log(savedSearchHistory);
+//}
+
+
 searchBtn.addEventListener("click", currentWeather);
 
 searchBtn.addEventListener("click", fiveDayForecast);
+
+searchBtn.addEventListener("click", storeSearchHistory);
