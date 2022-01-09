@@ -73,7 +73,7 @@ function fiveDayForecast() {
   var city = cityInput.val();
   console.log(city);
   var forecastApiUrl =
-    "https://api.openweathermap.org/data/2.5/forecast?=" +
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
     city +
     "&units=metric&appid=" +
     apiKey;
@@ -87,12 +87,36 @@ function fiveDayForecast() {
       console.log(data);
       for (var i = 0; i < 40; i += 8) {
         var forecastCard = document.createElement("div");
+        var forecastDate = document.createElement("h3");
+        var forecastIcon = document.createElement("img");
         var forecastTemp = document.createElement("p");
         var forecastWind = document.createElement("p");
         var forecastHumidity = document.createElement("p");
 
+        forecastIconProperty = data.list[i].weather[0].icon;
+        forecastIconLink =
+          "https://openweathermap.org/img/w/" + forecastIconProperty + ".png";
+        forecastIcon.setAttribute("src", forecastIconLink);
+
+        var headerDate = data.list[i].dt_txt.split(" ")[0];
+        var year = headerDate.split("-")[0];
+        var month = headerDate.split("-")[1];
+        var day = headerDate.split("-")[2];
+
+        console.log(year);
+        console.log(month);
+        console.log(day);
+
+        forecastDate.textContent = day + "/" + month + "/" + year;
         forecastTemp.textContent = "Temp: " + data.list[i].main.temp + "°C";
+        forecastWind.textContent = "Wind: " + data.list[i].wind.speed + "m/s";
+        forecastHumidity.textContent =
+          "Humidity: " + data.list[i].main.humidity + "%";
+        forecastCard.append(forecastDate);
+        forecastCard.append(forecastIcon);
         forecastCard.append(forecastTemp);
+        forecastCard.append(forecastWind);
+        forecastCard.append(forecastHumidity);
         forecastContainer.append(forecastCard);
       }
     });
