@@ -1,9 +1,8 @@
 var apiKey = "d958229d63493292b265d62c35a602e7";
 var dateToday = moment().format("DD/MM/YYYY");
 var currentWeatherEl = document.getElementById("current-weather-container");
-
+var forecastContainer = document.getElementById("five-day-forecast");
 var searchBtn = document.getElementById("searchBtn");
-
 
 function currentWeather() {
   event.preventDefault();
@@ -41,6 +40,62 @@ function currentWeather() {
       currentWeatherEl.append(currentWind);
       currentWeatherEl.append(currentHumidity);
     });
+  uvIndex();
+}
+
+function uvIndex() {
+  event.preventDefault();
+  var cityInput = $("input[name='city-search']");
+  var city = cityInput.val();
+  console.log(city);
+
+  var getUV =
+    "https://api.openweathermap.org/data/2.5/onecall?" +
+    city +
+    "&exclude=minutely,hourly,alerts&units=metric&appid=" +
+    apiKey;
+
+  fetch(getUV)
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data.current.uvi);
+      var currentUvIndex = document.createElement("<p>");
+      currentUvIndex.textContent = "UV Index" + data.current.uvi;
+      currentWeatherEl.append(currentUvIndex);
+    });
+}
+
+function fiveDayForecast() {
+  var cityInput = $("input[name='city-search']");
+  var city = cityInput.val();
+  console.log(city);
+  var forecastApiUrl =
+    "http://api.openweathermap.org/data/2.5/forecast?" +
+    city +
+    "&units=metric&appid=" +
+    apiKey;
+
+  fetch(forecastApiUrl)
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
+      for (var i = 0; i < 40, i + 8; ) {
+        var forecastTemp = document.createElement("p");
+        var forecastWind = document.createElement("p");
+        var forecastHumidity = document.createElement("p");
+
+        forecastTemp.textContent = "Temp: " + data.list[i].main.temp + "°C";
+        forecastContainer.append(forecastTemp);
+      }
+    });
 }
 
 searchBtn.addEventListener("click", currentWeather);
+
+searchBtn.addEventListener("click", fiveDayForecast);
