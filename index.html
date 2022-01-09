@@ -15,24 +15,29 @@
       <div id="dashboard-header">
           <h1>Weather Dashboard</h1>
       </div>
-    </header>
-    <aside>
+    </header> 
+    <div id="content">
+    <aside class="row">
+        <div class="col-3">
       <h2>Search for a City:</h2>
       <form>
         <input type="text" id="city-search" name="city-search" placeholder="Atlanta" />
         <button id="searchBtn">Search</button>
       </form>
       <ul id="past-searches"></ul>
+      </div>
     </aside>
-    <section>
-      <div id="current-weather-container">
+    <section class= "row">
+      <div class= "col-10" id="current-weather-container">
       </div>
     </section>
     <section>
-      <div id="five-day-forecast">
-          <h2> Five Day Forecast </h2>
+        <h2> Five Day Forecast </h2>
+      <div id="five-day-forecast" class="d-flex justify-content-between">
       </div>
     </section>
+    </div>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="./Assets/script.js"></script>

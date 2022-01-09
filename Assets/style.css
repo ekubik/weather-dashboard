@@ -4,3 +4,40 @@
   padding: 30px 0px;
   text-align: center;
 }
+
+#current-weather-container {
+  border: solid 2px black;
+  padding: 20px;
+}
+
+.extreme {
+  background-color: black;
+  color: white;
+}
+
+.highUV {
+  background-color: red;
+  color: white;
+}
+
+.moderateUV {
+  background-color: yellow;
+  color: black;
+}
+
+.lowUV {
+  background-color: green;
+  color: black;
+}
+
+.forecast-cards {
+  color: white;
+  background-color: #2696be;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+}
+
+h2 {
+  margin-top: 20px;
+}
