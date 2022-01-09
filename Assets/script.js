@@ -40,7 +40,6 @@ function currentWeather() {
       currentWeatherEl.append(currentWind);
       currentWeatherEl.append(currentHumidity);
     });
-  uvIndex();
 }
 
 function uvIndex() {
@@ -50,7 +49,7 @@ function uvIndex() {
   console.log(city);
 
   var getUV =
-    "https://api.openweathermap.org/data/2.5/onecall?" +
+    "http://api.openweathermap.org/data/2.5/onecall?" +
     city +
     "&exclude=minutely,hourly,alerts&units=metric&appid=" +
     apiKey;
@@ -69,11 +68,12 @@ function uvIndex() {
 }
 
 function fiveDayForecast() {
+  event.preventDefault();
   var cityInput = $("input[name='city-search']");
   var city = cityInput.val();
   console.log(city);
   var forecastApiUrl =
-    "http://api.openweathermap.org/data/2.5/forecast?" +
+    "https://api.openweathermap.org/data/2.5/forecast?=" +
     city +
     "&units=metric&appid=" +
     apiKey;
@@ -85,7 +85,7 @@ function fiveDayForecast() {
     })
     .then(function (data) {
       console.log(data);
-      for (var i = 0; i < 40, i + 8; ) {
+      for (var i = 0; i < 40; i += 8) {
         var forecastCard = document.createElement("div");
         var forecastTemp = document.createElement("p");
         var forecastWind = document.createElement("p");
