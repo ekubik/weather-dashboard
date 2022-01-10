@@ -16,6 +16,7 @@ The project fulfills its basic requirements, but could benefit from solving seve
 <li> Running a function to retrieve data from a default city (or last saved search) upon loading the page. Currently the page is blank, and not very aesthetically pleasing, until a value is input into the search bar, and functions are called to display data. </li>
 <li> Preventing the same city being saved/displayed multiple times in the past searches section</li>
 <li>Optimising and cleaning up the code. Variables should be reassigned rather than having to rewrite whole functions. </li>
+<li> The application is also quite slow to load.</li>
 
 </br>
 </br>

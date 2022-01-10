@@ -19,7 +19,7 @@ function currentWeather() {
   console.log(city);
   //url to access open weather api - uses apiKey variable
   var apiUrl =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&units=metric&appid=" +
     apiKey;
@@ -64,7 +64,7 @@ function uvIndex() {
   var city = cityInput.val();
   console.log(city);
   var apiUrl =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&units=metric&appid=" +
     apiKey;
@@ -232,7 +232,7 @@ function retrieveHistory(event) {
   //run same functions again, but with different value for city variable
   function currentWeatherHistory() {
     var apiUrl =
-      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
       "&units=metric&appid=" +
       apiKey;
@@ -267,7 +267,7 @@ function retrieveHistory(event) {
   function uvIndexHistory() {
     event.preventDefault();
     var apiUrl =
-      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
       "&units=metric&appid=" +
       apiKey;
