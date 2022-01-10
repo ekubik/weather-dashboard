@@ -2,8 +2,12 @@ var apiKey = "d958229d63493292b265d62c35a602e7";
 var dateToday = moment().format("DD/MM/YYYY");
 var currentWeatherEl = document.getElementById("current-weather-container");
 var forecastContainer = document.getElementById("five-day-forecast");
+var pastSearchesContainer = document.getElementById("past-searches");
 var searchBtn = document.getElementById("searchBtn");
-var searchHistory = [];
+var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+var clearBtn = document.getElementById("clearHistoryBtn");
+var accessAgain = document.querySelectorAll(".previous-search");
+var city;
 
 function currentWeather() {
   event.preventDefault();
@@ -162,11 +166,33 @@ function storeSearchHistory() {
   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 }
 
-//function displaySearchHistory() {
-  //var savedSearchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-  //console.log(savedSearchHistory);
-//}
+function displaySearchHistory() {
+  for (var i = 0; i < searchHistory.length; i++) {
+    var previousSearchTerm = document.createElement("li");
+    previousSearchTerm.textContent = searchHistory[i];
+    pastSearchesContainer.append(previousSearchTerm);
+    previousSearchTerm.setAttribute(
+      "class",
+      "list-group-item list-group-item-action previous-search"
+    );
+  }
+  if (searchHistory.length >= 6) {
+    searchHistory.shift();
+  }
+}
 
+displaySearchHistory();
+
+function clearHistory() {
+  localStorage.clear();
+}
+
+//accessAgain.addEventListener("click", function(event){
+  //city = event.target.textContent;
+  //console.log(city);
+//});
+
+clearBtn.addEventListener("click", clearHistory);
 
 searchBtn.addEventListener("click", currentWeather);
 
