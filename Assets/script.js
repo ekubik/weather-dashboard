@@ -116,7 +116,6 @@ function uvIndex() {
     });
 }
 
-
 function fiveDayForecast() {
   event.preventDefault();
   //retrieve forecast data from open weather API
@@ -190,7 +189,7 @@ function storeSearchHistory() {
   var cityInput = $("input[name='city-search']");
   var city = cityInput.val();
 
-//create list item for every search value and append to container, when users clicks search
+  //create list item for every search value and append to container, when users clicks search
 
   //if (searchHistory.includes(!city)){
   var searchCity = document.createElement("li");
