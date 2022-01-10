@@ -40,6 +40,7 @@ function currentWeather() {
       currentWind.textContent = "Wind: " + data.wind.speed + " m/s";
       currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
 
+      currentWeatherEl.innerHTML = "";
       currentWeatherEl.append(cityName);
       currentWeatherEl.append(currentTemperature);
       currentWeatherEl.append(currentWind);
@@ -122,6 +123,7 @@ function fiveDayForecast() {
     })
     .then(function (data) {
       console.log(data);
+      forecastContainer.innerHTML = "";
       for (var i = 0; i < 40; i += 8) {
         var forecastCard = document.createElement("div");
         var forecastDate = document.createElement("h3");
@@ -232,6 +234,7 @@ function retrieveHistory(event) {
         currentWind.textContent = "Wind: " + data.wind.speed + " m/s";
         currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
 
+        currentWeatherEl.innerHTML= "";
         currentWeatherEl.append(cityName);
         currentWeatherEl.append(currentTemperature);
         currentWeatherEl.append(currentWind);
@@ -307,6 +310,7 @@ function retrieveHistory(event) {
       })
       .then(function (data) {
         console.log(data);
+        forecastContainer.innerHTML = "";
         for (var i = 0; i < 40; i += 8) {
           var forecastCard = document.createElement("div");
           var forecastDate = document.createElement("h3");
@@ -348,10 +352,6 @@ function retrieveHistory(event) {
   fiveDayForecastHistory();
 }
 
-//accessAgain.addEventListener("click", function(event){
-//city = event.target.textContent;
-//console.log(city);
-//});
 
 searchBtn.addEventListener("click", currentWeather);
 
