@@ -18,24 +18,26 @@
     </header> 
     <div id="content">
     <aside class="row">
-        <div class="col-3">
+        <div class="col-12">
       <h2>Search for a City:</h2>
       <form>
-        <input type="text" id="city-search" name="city-search" placeholder="Atlanta" />
-        <button id="searchBtn">Search</button>
+        <input class ="col-12" type="text" id="city-search" name="city-search" placeholder="Atlanta" />
+        <button class="btn btn-primary col-12" id="searchBtn">Search</button>
       </form>
       <ul class= "list-group" id="past-searches"></ul>
       </div>
     </aside>
+    <div id="weather-display">
     <section class= "row">
-      <div class= "col-10" id="current-weather-container">
+      <div class= "col-8" id="current-weather-container">
       </div>
     </section>
     <section>
         <h2> Five Day Forecast </h2>
-      <div id="five-day-forecast" class="d-flex justify-content-between">
+      <div id="five-day-forecast" class="d-flex justify-content-between col-8">
       </div>
     </section>
+    </div>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

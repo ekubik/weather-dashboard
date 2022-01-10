@@ -10,6 +10,16 @@
   padding: 20px;
 }
 
+#content {
+  display: flex;
+  flex-direction: row;
+}
+
+#weather-display {
+  display: flex;
+  flex-direction: column;
+}
+
 .extreme {
   background-color: black;
   color: white;
@@ -40,4 +50,12 @@
 
 h2 {
   margin-top: 20px;
+}
+
+#searchBtn {
+  margin: 10px 5px;
+}
+
+.list-group-item {
+  margin: 10px, 5px;
 }

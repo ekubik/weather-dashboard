@@ -1,3 +1,5 @@
+
+//define variables
 var apiKey = "d958229d63493292b265d62c35a602e7";
 var dateToday = moment().format("DD/MM/YYYY");
 var currentWeatherEl = document.getElementById("current-weather-container");
@@ -9,6 +11,7 @@ var city;
 var previousSearchTerm;
 var searchCity;
 
+//function pulls current weather data from api and displays on page
 function currentWeather() {
   event.preventDefault();
   var cityInput = $("input[name='city-search']");
@@ -26,9 +29,6 @@ function currentWeather() {
     })
     .then(function (data) {
       console.log(data);
-      console.log(data.main.temp);
-      console.log(data.wind.speed);
-      console.log(data.main.humidity);
 
       var cityName = document.createElement("h2");
       var currentTemperature = document.createElement("p");
@@ -49,6 +49,7 @@ function currentWeather() {
   uvIndex();
 }
 
+//function pulls uv index and displays on page
 function uvIndex() {
   event.preventDefault();
   var cityInput = $("input[name='city-search']");
@@ -161,11 +162,6 @@ function fiveDayForecast() {
     });
 }
 
-//function retrieveHistory(event){
-// event.currentTarget.textContent = city;
-//$("input[name='city-search']").val() = city
-//}
-
 function storeSearchHistory() {
   var cityInput = $("input[name='city-search']");
   var city = cityInput.val();
@@ -219,9 +215,6 @@ function retrieveHistory(event) {
       })
       .then(function (data) {
         console.log(data);
-        console.log(data.main.temp);
-        console.log(data.wind.speed);
-        console.log(data.main.humidity);
 
         var cityName = document.createElement("h2");
         var currentTemperature = document.createElement("p");
@@ -234,7 +227,7 @@ function retrieveHistory(event) {
         currentWind.textContent = "Wind: " + data.wind.speed + " m/s";
         currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
 
-        currentWeatherEl.innerHTML= "";
+        currentWeatherEl.innerHTML = "";
         currentWeatherEl.append(cityName);
         currentWeatherEl.append(currentTemperature);
         currentWeatherEl.append(currentWind);
@@ -329,9 +322,6 @@ function retrieveHistory(event) {
           var month = headerDate.split("-")[1];
           var day = headerDate.split("-")[2];
 
-          console.log(year);
-          console.log(month);
-          console.log(day);
           forecastDate.textContent = day + "/" + month + "/" + year;
           forecastTemp.textContent = "Temp: " + data.list[i].main.temp + " °C";
           forecastWind.textContent =
@@ -351,7 +341,6 @@ function retrieveHistory(event) {
   currentWeatherHistory();
   fiveDayForecastHistory();
 }
-
 
 searchBtn.addEventListener("click", currentWeather);
 
