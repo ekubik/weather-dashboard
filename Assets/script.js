@@ -167,6 +167,8 @@ function fiveDayForecast() {
 function storeSearchHistory() {
   var cityInput = $("input[name='city-search']");
   var city = cityInput.val();
+
+  //if (searchHistory.includes(!city)){
   var searchCity = document.createElement("li");
   searchCity.textContent = city;
   pastSearchesContainer.append(searchCity);
@@ -177,7 +179,7 @@ function storeSearchHistory() {
   searchHistory.push(city);
   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   searchCity.addEventListener("click", retrieveHistory);
-}
+} //}
 
 function displaySearchHistory() {
   for (var i = 0; i < searchHistory.length; i++) {
@@ -188,11 +190,12 @@ function displaySearchHistory() {
       "class",
       "list-group-item list-group-item-action previous-search"
     );
+    previousSearchTerm.addEventListener("click", retrieveHistory);
   }
   if (searchHistory.length >= 6) {
     searchHistory.shift();
   }
-  previousSearchTerm.addEventListener("click", retrieveHistory);
+
   //console.log(city);
   //previousSearchTerm.addEventListener("click", currentWeather)
 }
